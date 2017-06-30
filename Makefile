@@ -5,10 +5,10 @@ default: release
 deps/geometry/include/mapbox/geometry.hpp:
 	git submodule update --init
 
-mason_packages/.link/bin/mapnik-config: deps/geometry/include/mapbox/geometry.hpp
+mason_packages/.link/bin/mapnik-config:
 	./install_mason.sh
 
-node_modules: mason_packages/.link/bin/mapnik-config
+node_modules: deps/geometry/include/mapbox/geometry.hpp mason_packages/.link/bin/mapnik-config
 	# install deps but for now ignore our own install script
 	# so that we can run it directly in either debug or release
 	npm install --ignore-scripts --clang
